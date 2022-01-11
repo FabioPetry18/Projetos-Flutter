@@ -15,13 +15,14 @@ class _CalculoState extends State<Calculo> {
   TextEditingController pesoController = TextEditingController();
   TextEditingController alturaController = TextEditingController();
   String _texto = "informe seus dados";
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   void limpar(){
      pesoController.text = "";
        alturaController.text = "";
     setState(() {      
       _texto = "Informe seus dados";
+      _formKey =  GlobalKey<FormState>();
     });
    
   }
@@ -38,7 +39,7 @@ class _CalculoState extends State<Calculo> {
     }else if (imc >= 24.9 && imc < 29.9){
       _texto = "acima do peso (${imc.toStringAsPrecision(3)})";
     }
-    print(_texto);
+    
     });
     
 
@@ -82,7 +83,7 @@ class _CalculoState extends State<Calculo> {
           ),
            TextFormField( keyboardType: TextInputType.number,
             decoration: const InputDecoration(
-              label: Text("Altura"),
+              label: Text("Altura (cm)"),
               labelStyle: TextStyle(color: Colors.amber)
               ),    
               textAlign: TextAlign.center,
@@ -101,7 +102,7 @@ class _CalculoState extends State<Calculo> {
            child:  ElevatedButton(
             style: ElevatedButton.styleFrom(primary: Colors.amber),
             onPressed: () {
-              if(_formKey.currentState!.validate());{
+              if(_formKey.currentState!.validate()){
                 calcular();
               }
             }  ,

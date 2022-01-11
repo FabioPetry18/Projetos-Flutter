@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:aplicacao/contadorpessoas.dart';
 import 'package:aplicacao/calculoImc.dart';
+import 'package:http/http.dart' as http;
+import 'package:async/async.dart';
+import 'package:aplicacao/conversorDeMoedas.dart';
 
 
-void main(){
+
+void main() async {
+
+ 
   runApp(const Myapp());
 }
 
@@ -32,10 +38,11 @@ class HomePage extends StatelessWidget {
       ),
      
       drawer: const Drawer(),
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Column(
+        
+        mainAxisAlignment: MainAxisAlignment.start ,
         children: [
-           const SizedBox(height: 25),
+          
           ElevatedButton(
             child: const Text("Contador de Pessoas"),
             onPressed: () {
@@ -45,8 +52,8 @@ class HomePage extends StatelessWidget {
               );
             },
           ),
-          const SizedBox(height: 25),
-            ElevatedButton(
+     
+        ElevatedButton(
             child: const Text("Cálculo de IMC"),
             onPressed: () {
               Navigator.push(
@@ -55,7 +62,30 @@ class HomePage extends StatelessWidget {
               );
             },
           ),
-        ],
+          
+         
+            
+                
+               ElevatedButton(
+             child: const Text("Conversor de moedas"),
+               onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Conversor()),
+              );
+            },
+              
+            )
+              ],
+           
+            
+            
+            
+          
+                
+           
+        
+        
         
       ),
     );
