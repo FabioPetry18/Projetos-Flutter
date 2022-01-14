@@ -4,6 +4,7 @@ import 'package:aplicacao/calculoImc.dart';
 import 'package:http/http.dart' as http;
 import 'package:async/async.dart';
 import 'package:aplicacao/conversorDeMoedas.dart';
+import 'package:aplicacao/ToDo.dart';
 
 
 
@@ -32,13 +33,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       
-      appBar: AppBar(
-        
+      appBar: AppBar(        
         title: const Text("Projetos"),        
       ),
      
       drawer: const Drawer(),
-      body: Column(
+      body: Wrap(
         
         mainAxisAlignment: MainAxisAlignment.start ,
         children: [
@@ -62,20 +62,25 @@ class HomePage extends StatelessWidget {
               );
             },
           ),
-          
-         
-            
-                
-               ElevatedButton(
-             child: const Text("Conversor de moedas"),
-               onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Conversor()),
-              );
-            },
-              
-            )
+        ElevatedButton(
+            child: const Text("Conversor de moedas"),
+              onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Conversor()),
+            );
+          },
+         ),
+         ElevatedButton(
+            child: const Text("Lista de tarefas"),
+              onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Todo ()),
+            );
+          },
+         ),
+
               ],
            
             
