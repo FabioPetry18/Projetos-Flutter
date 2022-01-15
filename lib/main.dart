@@ -15,7 +15,7 @@ void main() async {
 }
 
 class Myapp extends StatelessWidget {
-  const Myapp({ Key? key }) : super(key: key);
+  const Myapp({ Key key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class Myapp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({ Key? key }) : super(key: key);
+  const HomePage({ Key key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
       drawer: const Drawer(),
       body: Wrap(
         
-        mainAxisAlignment: MainAxisAlignment.start ,
+        
         children: [
           
           ElevatedButton(

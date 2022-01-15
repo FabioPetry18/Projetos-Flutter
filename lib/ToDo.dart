@@ -7,7 +7,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 
 class Todo extends StatefulWidget {
-  const Todo({ Key? key }) : super(key: key);
+  const Todo({ Key key }) : super(key: key);
 
   @override
   _TodoState createState() => _TodoState();
@@ -68,7 +68,7 @@ class _TodoState extends State<Todo> {
                   title: Text(_toDoList[index]["title"]),
                   value: _toDoList[index]["ok"],
                   secondary: CircleAvatar(
-                    child: Icon(_toDoList[index]["ok"]! ?
+                    child: Icon(_toDoList[index]["ok"] ?
                     Icons.check : Icons.error),
                   ),
                   onChanged: null,
