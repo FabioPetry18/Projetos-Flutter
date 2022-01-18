@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 
 class Contador extends StatefulWidget {
-  const Contador({ Key? key }) : super(key: key);
+  const Contador({ Key key }) : super(key: key);
 
   @override
   _ContadorState createState() => _ContadorState();

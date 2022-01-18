@@ -15,7 +15,7 @@ void main() async {
 }
 
 class Myapp extends StatelessWidget {
-  const Myapp({ Key? key }) : super(key: key);
+  const Myapp({ Key key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class Myapp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({ Key? key }) : super(key: key);
+  const HomePage({ Key key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,11 +40,14 @@ class HomePage extends StatelessWidget {
       drawer: const Drawer(),
       body: Wrap(
         
-        mainAxisAlignment: MainAxisAlignment.start ,
+        
         children: [
-          
+           SizedBox(height: 15.0, width: 15.0,),
           ElevatedButton(
-            child: const Text("Contador de Pessoas"),
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.all(20.0),
+            ),
+            child: const Text("Contador de Pessoas"),            
             onPressed: () {
               Navigator.push(
                 context,
@@ -52,8 +55,11 @@ class HomePage extends StatelessWidget {
               );
             },
           ),
-     
+        SizedBox(height: 15.0, width: 15.0,),
         ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.all(20.0),
+            ),
             child: const Text("Cálculo de IMC"),
             onPressed: () {
               Navigator.push(
@@ -62,7 +68,11 @@ class HomePage extends StatelessWidget {
               );
             },
           ),
+           SizedBox(height: 15.0, width: 15.0,),
         ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.all(20.0),
+            ),
             child: const Text("Conversor de moedas"),
               onPressed: () {
             Navigator.push(
@@ -71,12 +81,16 @@ class HomePage extends StatelessWidget {
             );
           },
          ),
+       
          ElevatedButton(
+           style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.all(20.0),
+            ),
             child: const Text("Lista de tarefas"),
               onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const Todo ()),
+              MaterialPageRoute(builder: (context) =>  Todo ()),
             );
           },
          ),

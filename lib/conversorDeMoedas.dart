@@ -16,7 +16,7 @@ Future<Map> getData() async {
 }
 
 class Conversor extends StatefulWidget {
-  const Conversor({ Key? key }) : super(key: key);
+  const Conversor({ Key key }) : super(key: key);
 
   @override
   _Conversor createState() => _Conversor();
@@ -30,8 +30,8 @@ class _Conversor extends State<Conversor> {
 
 
 
-   double? dolar;
-   double? euro;
+   double dolar;
+   double euro;
 
    void _clearAll(){
     realController.text = "";
@@ -44,8 +44,8 @@ void _realChanged(String text){
     _clearAll();
   }
   double real = double.parse(text);
-  dolarController.text = (real/dolar!).toStringAsFixed(2);
-  euroController.text = (real/euro!).toStringAsFixed(2);
+  dolarController.text = (real/dolar).toStringAsFixed(2);
+  euroController.text = (real/euro).toStringAsFixed(2);
 
 }
 void _euroChanged(String text){
@@ -53,8 +53,8 @@ void _euroChanged(String text){
     _clearAll();
   }
     double euro = double.parse(text);
-    realController.text = (euro * this.euro!).toStringAsFixed(2);
-    dolarController.text = (euro * this.euro! / dolar!).toStringAsFixed(2);
+    realController.text = (euro * this.euro).toStringAsFixed(2);
+    dolarController.text = (euro * this.euro / dolar).toStringAsFixed(2);
 
 }
 
@@ -63,8 +63,8 @@ void _dolarChanged(String text){
     _clearAll();
   }
     double dolar = double.parse(text);
-    realController.text = (dolar * this.dolar!).toStringAsFixed(2);
-    euroController.text = (dolar * this.dolar!/euro!).toStringAsFixed(2);
+    realController.text = (dolar * this.dolar).toStringAsFixed(2);
+    euroController.text = (dolar * this.dolar/euro).toStringAsFixed(2);
 
 }
 
@@ -107,8 +107,8 @@ void _dolarChanged(String text){
                   ),
                 );
                 } else {
-                  dolar = snapshot.data!["results"]["currencies"]["USD"]["buy"];
-                  euro = snapshot.data!["results"]["currencies"]["EUR"]["buy"];
+                  dolar = snapshot.data["results"]["currencies"]["USD"]["buy"];
+                  euro = snapshot.data["results"]["currencies"]["EUR"]["buy"];
                   return SingleChildScrollView(
                     padding: const EdgeInsets.all(10),
                     child: Column(
@@ -146,7 +146,7 @@ Widget buildTextField(String label, String prefix, TextEditingController c, Func
           color: Colors.red,                            
         ) ,
         keyboardType: TextInputType.number,
-        onChanged: f as void Function(String)?,
+        onChanged: f as void Function(String),
     );
                         
 }

@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Calculo extends StatefulWidget {
-  const Calculo({ Key? key }) : super(key: key);
+  const Calculo({ Key key }) : super(key: key);
 
   @override
   _CalculoState createState() => _CalculoState();
@@ -102,7 +102,7 @@ class _CalculoState extends State<Calculo> {
            child:  ElevatedButton(
             style: ElevatedButton.styleFrom(primary: Colors.amber),
             onPressed: () {
-              if(_formKey.currentState!.validate()){
+              if(_formKey.currentState.validate()){
                 calcular();
               }
             }  ,

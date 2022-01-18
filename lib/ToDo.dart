@@ -7,7 +7,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 
 class Todo extends StatefulWidget {
-  const Todo({ Key? key }) : super(key: key);
+  const Todo({ Key key }) : super(key: key);
 
   @override
   _TodoState createState() => _TodoState();
@@ -21,9 +21,11 @@ class _TodoState extends State<Todo> {
 
   void _addToDo() {
    setState(() {
-      Map<String, dynamic> newToDo = Map();
-    newToDo["title"] = _toDoController.text;
-    _toDoList.add(newToDo);
+       Map<String, dynamic> newToDo = Map();
+      newToDo["title"] = _toDoController.text;
+      _toDoController.text = "";
+      newToDo["ok"] = false;
+      _toDoList.add(newToDo);
    });
   }
 
@@ -68,7 +70,7 @@ class _TodoState extends State<Todo> {
                   title: Text(_toDoList[index]["title"]),
                   value: _toDoList[index]["ok"],
                   secondary: CircleAvatar(
-                    child: Icon(_toDoList[index]["ok"]! ?
+                    child: Icon(_toDoList[index]["ok"] ?
                     Icons.check : Icons.error),
                   ),
                   onChanged: null,
