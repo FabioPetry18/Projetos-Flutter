@@ -1,4 +1,4 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, must_call_super, prefer_collection_literals
 
 import 'dart:convert';
 import 'dart:io';
@@ -18,6 +18,21 @@ class _TodoState extends State<Todo> {
   final _toDoController = TextEditingController();
 
   List _toDoList = [];
+  Map<String, dynamic> _lastRemoved;
+  int _lastRemovedPos;
+
+
+  @override
+  void initState(){
+    super.initState();
+
+    _readData().then((data){
+      setState(() {
+         _toDoList = json.decode(data);
+      });
+     
+    });
+  }
 
   void _addToDo() {
    setState(() {
@@ -26,6 +41,7 @@ class _TodoState extends State<Todo> {
       _toDoController.text = "";
       newToDo["ok"] = false;
       _toDoList.add(newToDo);
+      _saveData();
    });
   }
 
@@ -65,23 +81,42 @@ class _TodoState extends State<Todo> {
             child: ListView.builder(
               padding: EdgeInsets.only(top: 10.0),
               itemCount: _toDoList.length,
-              itemBuilder: (context, index){
-                return CheckboxListTile(
-                  title: Text(_toDoList[index]["title"]),
-                  value: _toDoList[index]["ok"],
-                  secondary: CircleAvatar(
-                    child: Icon(_toDoList[index]["ok"] ?
-                    Icons.check : Icons.error),
-                  ),
-                  onChanged: null,
-                );
-              }
+              itemBuilder: buildItem
               ),
             ),
         ],
       ),
     );
   }
+Widget buildItem (context, index){
+                return Dismissible(
+                  key: Key(DateTime.now().microsecondsSinceEpoch.toString()), 
+                  child: CheckboxListTile(
+                  title: Text(_toDoList[index]["title"]),
+                  value: _toDoList[index]["ok"],
+                  secondary: CircleAvatar(
+                    child: Icon(_toDoList[index]["ok"] ?
+                    Icons.check : Icons.error),
+                  ),
+                  onChanged: (c){
+                    setState(() {
+                      _toDoList[index]["ok"] = c;
+                      _saveData();
+                    });
+                  },
+                ),
+                  background: Container(
+                    color: Colors.red,
+                    child: const Align(
+                      alignment: Alignment(-0.9, 0.0),
+                      child: Icon(Icons.delete, color: Colors.white,),
+                    ) ,
+                  ),
+                  direction: DismissDirection.startToEnd,
+                  
+                  );
+              }
+
   Future<File> _getFile() async {
   final directory = await getApplicationDocumentsDirectory();
   return File("${directory.path}/data.json");

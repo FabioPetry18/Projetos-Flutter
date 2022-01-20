@@ -38,14 +38,16 @@ class HomePage extends StatelessWidget {
       ),
      
       drawer: const Drawer(),
-      body: Wrap(
+      body: Center(
+        child: Wrap(
         
-        
+       runSpacing: 15.0,
         children: [
-           SizedBox(height: 15.0, width: 15.0,),
+           
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.all(20.0),
+               fixedSize: const Size(200, 60),
             ),
             child: const Text("Contador de Pessoas"),            
             onPressed: () {
@@ -55,10 +57,11 @@ class HomePage extends StatelessWidget {
               );
             },
           ),
-        SizedBox(height: 15.0, width: 15.0,),
+     
         ElevatedButton(
           style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.all(20.0),
+               fixedSize: const Size(200, 60),
             ),
             child: const Text("Cálculo de IMC"),
             onPressed: () {
@@ -68,10 +71,11 @@ class HomePage extends StatelessWidget {
               );
             },
           ),
-           SizedBox(height: 15.0, width: 15.0,),
+
         ElevatedButton(
           style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.all(20.0),
+               fixedSize: const Size(200, 60),
             ),
             child: const Text("Conversor de moedas"),
               onPressed: () {
@@ -81,10 +85,11 @@ class HomePage extends StatelessWidget {
             );
           },
          ),
-       
+        
          ElevatedButton(
            style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.all(20.0),
+              fixedSize: const Size(200, 60),
             ),
             child: const Text("Lista de tarefas"),
               onPressed: () {
@@ -95,19 +100,11 @@ class HomePage extends StatelessWidget {
           },
          ),
 
-              ],
-           
-            
-            
-            
-          
-                
-           
-        
-        
-        
+        ],
       ),
+      )
     );
     
   }
+  
 }
